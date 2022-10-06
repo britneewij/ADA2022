@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-long long int KadaneAlgorithm(long long int arr[], long long int n) {
+long long int KadaneAlgorithm(long long int arr[], long long int n){
     long long int temp = arr[0];
     long long int maxSum = arr[0];
 
@@ -18,7 +18,7 @@ long long int KadaneAlgorithm(long long int arr[], long long int n) {
     return maxSum;
 }
 
-int main() {
+int main(){
     long long int n;
     scanf("%lld", &n);
 
