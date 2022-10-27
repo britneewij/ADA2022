@@ -1,6 +1,3 @@
-// Hint from discord group message 2022/10/11 sent by 兔子冬眠中💤#6675, 2022/10/18 sent by rrruby#0112.
-// Discussion with a friend who has passed ADA last year, B09902085.
-
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
