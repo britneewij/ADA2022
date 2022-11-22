@@ -74,7 +74,7 @@ signed main(){
         dangos.pop_back();
         weight.pop_back();
       }
-      sort(off_dangos, off_dangos+x);
+      sort(off_dangos.begin(), off_dangos.end());
       /*
       for (int i=0; i<x; i++){
         cout << "off sorted " << off_dangos[i] << "\n";
