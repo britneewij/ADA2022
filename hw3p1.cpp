@@ -63,8 +63,9 @@ signed main(){
 
       int* off_dangos = new int[x]; // dangos taken off
       int* temp_dangos = new int[x]; // temp to store order
+      int size = dangos.size();
       for (int i=0; i<x; i++){
-        int size = dangos.size();
+        //int size = dangos.size();
         //cout << "haha" << dangos[size-1] << "\n";
         off_dangos[i] = dangos[size-1];
         temp_dangos[i] = dangos[size-1];
