@@ -107,7 +107,7 @@ signed main(){
         }
       }
     }
-    else if (temp[0]=='D'){
+    else{
       // takes x dangos off
       // calculate the sum of weight of those dangos
       int x;
