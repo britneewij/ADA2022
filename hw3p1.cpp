@@ -30,7 +30,7 @@ signed main(){
   for (int i=0; i<M; i++){
     cin >> temp;
 
-    if (strncmp(temp,"PUT", 3) == 0){
+    if (strncmp(temp,"PUT", 1) == 0){
       // puts a dango with weight w to the rod
       int w;
       cin >> w;
@@ -45,14 +45,14 @@ signed main(){
         weight.push_back(w + prev_w);
       }
     }
-    else if (strncmp(temp,"TAKE", 4) == 0){
+    else if (strncmp(temp,"TAKE", 1) == 0){
       // takes a dango off and eats it
       int size = dangos.size();
       cout << dangos[size-1] << "\n";
       dangos.pop_back();
       weight.pop_back();
     }
-    else if (strncmp(temp,"CC", 2) == 0){
+    else if (strncmp(temp,"CC", 1) == 0){
       // takes x dangos off
       // eat the x/k heaviest dangos
       int x, k;
@@ -107,7 +107,7 @@ signed main(){
         }
       }
     }
-    else if (strncmp(temp,"DD", 2) == 0){
+    else if (strncmp(temp,"DD", 1) == 0){
       // takes x dangos off
       // calculate the sum of weight of those dangos
       int x;
