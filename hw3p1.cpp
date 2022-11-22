@@ -61,13 +61,15 @@ signed main(){
       int eat = ceil(double((float)x/(float)k)); // amount to be eaten
       //cout << "eat " << eat << "\n";
 
-      int* off_dangos = new int[x]; // dangos taken off
-      int* temp_dangos = new int[x]; // temp to store order
+      //int* off_dangos = new int[x]; // dangos taken off
+      //int* temp_dangos = new int[x]; // temp to store order
+      vector<int> off_dangos(dangos.end()-1, dangos.end()-1-x);
+      vector<int> temp_dangos(off_dangos);
       for (int i=0; i<x; i++){
-        int size = dangos.size();
+        //int size = dangos.size();
         //cout << "haha" << dangos[size-1] << "\n";
-        off_dangos[i] = dangos[size-1];
-        temp_dangos[i] = dangos[size-1];
+        //off_dangos[i] = dangos[size-1];
+        //temp_dangos[i] = dangos[size-1];
         //cout << "off " << off_dangos[i] << " temp " << temp_dangos[i] << "\n";
         dangos.pop_back();
         weight.pop_back();
