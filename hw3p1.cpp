@@ -21,6 +21,7 @@
 using namespace std;
 
 signed main(){
+  ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
   int M;
   cin >> M;
 
@@ -61,20 +62,18 @@ signed main(){
       int eat = ceil(double((float)x/(float)k)); // amount to be eaten
       //cout << "eat " << eat << "\n";
 
-      //int* off_dangos = new int[x]; // dangos taken off
-      //int* temp_dangos = new int[x]; // temp to store order
-      vector<int> off_dangos(dangos.end()-1, dangos.end()-1-x);
-      vector<int> temp_dangos(off_dangos);
+      int* off_dangos = new int[x]; // dangos taken off
+      int* temp_dangos = new int[x]; // temp to store order
       for (int i=0; i<x; i++){
-        //int size = dangos.size();
+        int size = dangos.size();
         //cout << "haha" << dangos[size-1] << "\n";
-        //off_dangos[i] = dangos[size-1];
-        //temp_dangos[i] = dangos[size-1];
+        off_dangos[i] = dangos[size-1];
+        temp_dangos[i] = dangos[size-1];
         //cout << "off " << off_dangos[i] << " temp " << temp_dangos[i] << "\n";
         dangos.pop_back();
         weight.pop_back();
       }
-      sort(off_dangos.begin(), off_dangos.end());
+      sort(off_dangos, off_dangos+x);
       /*
       for (int i=0; i<x; i++){
         cout << "off sorted " << off_dangos[i] << "\n";
