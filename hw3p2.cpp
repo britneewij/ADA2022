@@ -18,11 +18,13 @@
 #include <bits/stdc++.h>
 
 #define int long long
-#define MAX 2001;
-#define INF 0x3f3f3f3f
+#define INF 1e18
+#define MAX 2001
 using namespace std;
 
-typedef pair< int, int > pii;
+typedef pair<int, int> edge;
+vector<edge> G[MAX];
+int d[MAX];
 
 /*
 Set MAX according to the number of nodes in the graph. Remember,
@@ -36,36 +38,35 @@ pair object for graph is assumed to be (node, weight). d[] array
 holds the shortest path from the source. It contains INF if not
 reachable from the source.
 */
-vector<pii> G[MAX];
-int d[MAX];
 
 void dijkstra(int start){
-    int u, v, c, w;
-
-    priority_queue<pii, vector<pii>, greater<pii>> Q;
+    priority_queue<edge, vector<edge>, greater<edge>> Q;
+    memset(d, 0x3f, sizeof(d));
+    Q.push(edge(0, start));
+    d[start] = 0;
 
     /*
     Reset the distance array and set INF as initial value. The
     source node will have weight 0. We push (0, start) in the
     priority queue as well that denotes start node has 0 weight.
     */
-    memset(d, 0x3f, sizeof d);
-    Q.push(pii(0, start));
-    d[start] = 0;
 
     // As long as queue is not empty, check each adjacent node of u
-
+    int u, c, v, w;
     while(!Q.empty()){
         u = Q.top().second; // node
-        c = Q.top().first; // node cost
-        Q.pop(); // remove the top item.
+        c = Q.top().first; // weight
+        Q.pop(); // remove top item
 
         /*
         We have discarded the visit array as we do not need it.
         If d[u] has already a better value than the currently
         popped node from queue, discard the operation on this node.
         */
-        if(d[u] < c)continue;
+
+        if(c > d[u]){
+            continue;
+        }
 
         /*
         In case you have a target node, check if u == target node.
@@ -76,22 +77,22 @@ void dijkstra(int start){
         Traverse the adjacent nodes of u. Remember, for the graph,
         the pair is assumed to be (node, weight).
         */
-        for(int i=0; i<G[u].size(); i++) {
+
+        for(int i=0; i<G[u].size(); i++){
             v = G[u][i].first; // node
             w = G[u][i].second; // weight
 
-            if(d[v] > d[u] + w) {
-                d[v] = d[u] + w;
-                Q.push(pii(d[v], v));
+            if(d[v] > d[u]+w){
+                d[v] = d[u]+w;
+                Q.push(edge(d[v], v));
             }
         }
     }
 }
 
-signed main() {
+signed main(){
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     int n, m;
-    int a, b, c;
-
     cin >> n >> m; //n nodes, m edges
 
     // init reset
@@ -99,17 +100,18 @@ signed main() {
         G[i].clear();
     }
 
+    int a, b, c;
     for(int i=0; i<m; i++){
         cin >> a >> b >> c;
-        G[a].push_back(pii(b, c));
+        G[a].push_back(edge(b, c));
     }
 
-    int min_sum = INF;
     int sum;
     int start = 1;
+    int min_sum = INF;
     for (int i=2; i<=n; i++){
         //cout << "i " << i << "\n";
-        G[1].push_back(pii(i, 0));
+        G[1].push_back(edge(i, 0));
         dijkstra(start);
 
         sum = 0;
